@@ -1,4 +1,5 @@
 <?php
+
 require_once('config.php');
 
 if ($db -> connect_error) {
