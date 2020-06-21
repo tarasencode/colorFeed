@@ -13,10 +13,10 @@ LIMIT 5;";
 $result = $db->query($query);
 
 if($result->num_rows > 0) {
-    $jsonArray = [];
+    $palettesArray = [];
     while ($row = $result->fetch_assoc()) {
         $row['colors'] = explode(",", $row['colors']);
-        $jsonArray[] = $row;
+        $palettesArray[] = $row;
     }
 }
 ?>
@@ -31,15 +31,15 @@ if($result->num_rows > 0) {
     <body>
         <div class="container">
             <div class="feed">
-                <?php foreach($jsonArray as $value): ?>
+                <?php foreach($palettesArray as $palette): ?>
                 <div class="palette">
                     <div class="colors">
-                        <?php foreach($value['colors'] as $color): ?>        
+                        <?php foreach($palette['colors'] as $color): ?>        
                         <div class="color" style="background-color: #<?=$color ?>"><div class="hex-value hide">#<?=strtoupper($color) ?></div></div>     
                         <?php endforeach; ?>   
                     </div>
                     <div class="palette-caption">
-                        <b><?=$value['name'] ?></b> <span>by: <?=$value['firstName']. ' '.$value['lastName'] ?></span>
+                        <b><?=$palette['name'] ?></b> <span>by: <?=$palette['firstName']. ' '.$palette['lastName'] ?></span>
                     </div>      
                 </div>  
                 <?php endforeach; ?>     

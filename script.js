@@ -1,5 +1,6 @@
 var colors = document.querySelectorAll('.color');
 var hexString = "";
+
 colors.forEach(function(color, index) {
     color.addEventListener("mouseenter", showHex);
     color.addEventListener("mouseleave", restoreHex);
@@ -9,6 +10,7 @@ colors.forEach(function(color, index) {
 function showHex() {
     hexString = this.firstChild.innerHTML;
     this.firstChild.classList.toggle("hide");
+
     var rgbArray = this.style.backgroundColor.match(/rgba?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)?(?:, ?(\d(?:\.\d?))\))?/);
     var luma = 0.2126 * rgbArray[1] + 0.7152 * rgbArray[2] + 0.0722 * rgbArray[3];
     if (luma < 150) {
