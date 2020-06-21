@@ -1,6 +1,5 @@
 <?php
-
-$db = new mysqli('localhost', 'root', 'root', 'test');
+require_once('config.php');
 
 if ($db -> connect_error) {
     die("DB connection failed: ".$db->connect_error);
